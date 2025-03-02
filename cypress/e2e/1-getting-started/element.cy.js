@@ -2,11 +2,8 @@
  
 describe('Cypress elements', () => {
 
-    before(() => {
-        cy.visit('https://wcaquino.me/cypress/componentes.html');
-    });
-
     beforeEach(() =>{
+        cy.visit('https://wcaquino.me/cypress/componentes.html');
         cy.reload();
     });
     
@@ -20,9 +17,18 @@ describe('Cypress elements', () => {
 
     });
 
-    it('should', () => {
+    it('Combobox', () => {
         cy.get('[data-test="dataEscolaridade"]')
             .select('2graucomp')
             .should('have.value','2graucomp');
+
+        // TODO validar as opções do combo
+    });
+
+    it.only('Combobox multiple select', () => {
+        cy.get('[data-testid="dataEsportes"]')
+            .select(['natacao', 'Corrida','nada']);
+
+        // TODO validar as opções selecionadas do combo multiplo
     });
 })
