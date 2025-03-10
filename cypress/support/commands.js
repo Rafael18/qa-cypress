@@ -23,3 +23,21 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+import loc from './locators';
+
+Cypress.Commands.add('command_login', () => {
+    cy.get(loc.LOGIN.USER).type('rafaeltec_@live.com');
+    cy.get(loc.LOGIN.PASSWORD).type('710092600');
+    cy.get(loc.LOGIN.BTN_LOGIN).click();
+});
+
+Cypress.Commands.add('command_reset', () => {
+    cy.get(loc.MENU.SETTINGS).click();
+    cy.get(loc.MENU.RESET).click();
+});
+
+Cypress.Commands.add('command_removeSession', () =>{
+    localStorage.removeItem("@barriga/token");
+    localStorage.removeItem("@barriga/user");
+});
